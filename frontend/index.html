@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Proposal Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app-container">
+        <!-- Input State -->
+        <section id="input-section" class="active">
+            <div class="header">
+                <h1>Turn chaos into a proposal.</h1>
+                <p>Paste your messy discovery call transcripts or meeting notes to instantly generate a professional proposal.</p>
+            </div>
+            <textarea id="notes-input" placeholder="Paste your discovery call transcripts, bullet points, or rambling thoughts here..."></textarea>
+            <button id="generate-btn">Generate Proposal</button>
+            <p id="error-msg" class="hidden">Whoops, couldn't reach the server. Try again?</p>
+        </section>
+
+        <!-- Loading State Overlay -->
+        <div id="loading-overlay" class="hidden">
+            <div class="spinner"></div>
+            <p>Drafting proposal...</p>
+        </div>
+
+        <!-- Output State (Proposal View) -->
+        <section id="output-section" class="hidden">
+            <div class="top-actions">
+                <button id="start-over-btn" class="ghost-btn">Start Over</button>
+                <button id="copy-btn" class="secondary-btn">Copy Text</button>
+            </div>
+            
+            <div class="proposal-document" id="proposal-doc">
+                <div class="doc-header">
+                    <h1 id="proposal-title">Project Proposal</h1>
+                    <div class="doc-meta">Date: <span id="proposal-date"></span></div>
+                </div>
+                
+                <hr class="divider">
+
+                <div class="doc-section">
+                    <h2>Executive Summary</h2>
+                    <p id="proposal-summary"></p>
+                </div>
+
+                <div class="doc-section">
+                    <h2>Scope of Work & Deliverables</h2>
+                    <ul class="deliverables-list" id="proposal-deliverables"></ul>
+                </div>
+
+                <div class="doc-section">
+                    <h2>Timeline & Phases</h2>
+                    <div class="timeline-table-container">
+                        <table class="timeline-table">
+                            <thead>
+                                <tr>
+                                    <th>Phase / Milestone</th>
+                                    <th>Estimated Duration</th>
+                                </tr>
+                            </thead>
+                            <tbody id="proposal-timeline"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="doc-section pricing-section">
+                    <h2>Project Investment</h2>
+                    <div class="pricing-grid">
+                        <div class="price-box">
+                            <span class="price-label">Hourly Rate</span>
+                            <span class="price-value">$100/hr</span>
+                        </div>
+                        <div class="price-box">
+                            <span class="price-label">Estimated Hours</span>
+                            <span class="price-value" id="proposal-hours">0 hrs</span>
+                        </div>
+                        <div class="price-box total-box">
+                            <span class="price-label">Total Estimated Investment</span>
+                            <span class="price-value" id="proposal-total">$0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
